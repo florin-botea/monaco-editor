@@ -28,6 +28,7 @@ export default {
     path: { type: String, default: '/' },
   },
   created() {
+    console.log(this.path)
     let name = '/';
     if (this.path != '/') {
       name = this.path.explode('/');
@@ -62,14 +63,14 @@ export default {
   methods: {
     show(file) {
       if (file.type == 1) {
-        this.fileSystem.index(file)
+        this.fileSystem.index(file.path)
         .then(res => {
           this.current = file;
           this.files = res.data;
         })
       }
       else {
-        this.fileSystem.show(file)
+        this.fileSystem.show(file.path)
         .then(res => {
           this.$emit('fileOpen', res.data);
         })
