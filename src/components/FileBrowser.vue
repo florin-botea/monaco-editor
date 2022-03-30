@@ -30,6 +30,12 @@ export default {
     path: { type: String, default: '/' },
   },
   created() {
+        this.fileSystem.show('/storage/emulated/0/dev/exegeza/webpack.config.js')
+        .then(res => {
+          alert(res.data)
+          this.$emit('fileOpen', res.data);
+        })
+
     let name = '/';
     if (this.path != '/') {
       name = this.path.explode('/');
@@ -72,7 +78,6 @@ export default {
         })
       }
       else {
-        console.log(123);
         this.fileSystem.show(file.path)
         .then(res => {
           this.$emit('fileOpen', res.data);
