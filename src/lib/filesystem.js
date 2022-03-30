@@ -37,7 +37,7 @@ export default {
           new Promise(r => setTimeout(() => resolve(res), 1000));
           resolve(res)
         } else {
-          resolve(res);
+          resolve(JSON.parse(res));
         }
       } catch (e) {
         reject(e);
