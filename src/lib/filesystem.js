@@ -55,6 +55,7 @@ export default {
   },
   _call(m, args) {
     return new Promise((resolve, reject) => {
+      console.log(m)
       try {
         let res = window.fileSystem[m](args);
         if (mock) {
