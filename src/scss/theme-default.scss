@@ -1,0 +1,23 @@
+$primary: darkblue;
+$secondary: #515197;
+
+.theme-default {
+  .btn-primary, .bg-primary, .header, .modal-header {
+    background-color: $primary;
+  }
+  .btn-primary {
+    color: white;
+    font-weight: bold;
+    background-color: $primary;
+  }
+  .btn-secondary {
+    color: white;
+    font-weight: bold;
+    background-color: $secondary;
+  }
+
+  .modal-dialog {
+    background: #515197;
+    color: white;
+  }
+}

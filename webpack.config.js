@@ -1,5 +1,6 @@
 const { VueLoaderPlugin } = require("vue-loader");
 const { VueCompilerSfc } = require('@vue/compiler-sfc');
+
 /*const htmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -8,13 +9,13 @@ const autoprefixer = require("autoprefixer");
 const path = require("path");
 
 module.exports = {
+  mode: 'development', // production
   entry: {
-    main: "./ssrc/main.js",
+    main: "./src/main.js",
   },
   output: {
-    filename: "[name].[contenthash:8].js",
-    path: path.resolve(__dirname, "dist"),
-    chunkFilename: "[name].[contenthash:8].js",
+    path: path.resolve(__dirname, 'public'), 
+    filename: 'app.js'
   },
   module: {
     rules: [
@@ -28,7 +29,18 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
-      }
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      },
       /*
       {
         test: /\.(eot|ttf|woff|woff2)(\?\S*)?$/,
@@ -78,7 +90,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      vue$: "vue/dist/vue.runtime.esm.js",
+      vue$: "vue/dist/vue.js",
     },
     extensions: ["*", ".js", ".vue", ".json"],
   },/*

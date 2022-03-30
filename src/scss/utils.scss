@@ -1,0 +1,32 @@
+/* utilities */
+.d-flex {
+  display: flex;
+}
+
+.d-flex.justify-content-between {
+  justify-content: space-between;
+}
+
+$sizes: (1, 2, 3, 4, 5);
+@each $i in $sizes {
+  $size: 0.25 * $i;
+  .p-#{$i} {
+    padding: #{$size}rem;
+  }
+  .px-#{$i} {
+    padding-left: #{$size}rem;
+    padding-right: #{$size}rem;
+  }
+  .py-#{$i} {
+    padding-top: #{$size}rem;
+    padding-bottom: #{$size}rem;
+  }
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.semi-bold {
+  font-weight: 700;
+}
