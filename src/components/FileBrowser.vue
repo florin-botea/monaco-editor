@@ -60,12 +60,12 @@ export default {
       let breadcrumbs = [];
       let parentPath = this.sharedPath[this.sharedPath.length-1] == '/' ? this.sharedPath : this.sharedPath + '/';
       parts.forEach(p => {
+        parentPath += '/' + p;
         breadcrumbs.push({
           name: p,
           path: parentPath,
           type: 1
         });
-        parentPath += '/' + p;
       });
 
       return breadcrumbs;
