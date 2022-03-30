@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <div class="d-flex justify-content-between w-100">
-          <h3 class="px-2 semi-bold">/&nbsp;
+          <h3 class="px-2 semi-bold nowrap" style="overflow-x: auto;">/&nbsp;
           <template v-for="file in breadcrumbs">
             <span @click="show(file)">{{ file.name }}</span>&nbsp;/&nbsp;
           </template></h3>
