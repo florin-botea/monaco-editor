@@ -30,7 +30,6 @@ export default {
     path: { type: String, default: '/' },
   },
   created() {
-    console.log(this.path)
     let name = '/';
     if (this.path != '/') {
       name = this.path.explode('/');
@@ -64,6 +63,7 @@ export default {
   // },
   methods: {
     show(file) {
+      console.log(file)
       if (file.type == 1) {
         this.fileSystem.index(file.path)
         .then(res => {
@@ -72,6 +72,7 @@ export default {
         })
       }
       else {
+        console.log(123);
         this.fileSystem.show(file.path)
         .then(res => {
           this.$emit('fileOpen', res.data);
