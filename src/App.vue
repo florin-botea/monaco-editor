@@ -32,8 +32,10 @@ export default {
   }),
   methods: {
     onFileOpen(file) {
+      alert(file.content);
       this.openedFiles.push(file);
-      this.activeFile = file;
+      this.$set(this.$data, 'activeFile', file);
+      this.fileBrowser = false;
     },
     onProjectOpen() {
 
