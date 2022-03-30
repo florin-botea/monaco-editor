@@ -3,8 +3,11 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <div class="d-flex justify-content-between w-100">
-          <h3 class="px-2 semi-bold">{{ current.path }}</h3>
-          <button class="btn btn-secondary">&times;</button>
+          <h3 class="px-2 semi-bold">/ 
+          <template v-for="file in breadcrumbs">
+            <span @click="show(file)">{{ file.name }}</span>
+          </template></h3>
+          <button class="btn btn-secondary" @click="$emit('cancel')">&times;</button>
         </div>
       </div>
       <div class="modal-body scrollable">
@@ -30,12 +33,6 @@ export default {
     path: { type: String, default: '/' },
   },
   created() {
-        this.fileSystem.show('/storage/emulated/0/dev/exegeza/webpack.mix.js')
-        .then(res => {
-          alert(res.data)
-          this.$emit('fileOpen', res.data);
-        })
-
     let name = '/';
     if (this.path != '/') {
       name = this.path.explode('/');
@@ -48,37 +45,50 @@ export default {
     });
   },
   data: () => ({
+    sharedPath: '/',
     files: [],
     current: {
       path: '/',
     },
   }),
-  // computed: {
-  //   parent() {
-  //     if (this.current.path == '/') {
-  //       return null;
-  //     }
-  //     let path = this.path.explode('/');
-  //     path.pop();
-  //     path = path.join('/');
-  //     return {
-  //       path: path,
-  //       type: 1
-  //     };
-  //   }
-  // },
+  computed: {
+    breadcrumbs() {
+      if (this.current.path == '/' || this.current.path == this.sharedPath) {
+        return [];
+      }
+      let parts = this.current.path.replace(this.sharedPath, '').split('/').filter(x => x);
+      let breadcrumbs = [];
+      let parentPath = this.sharedPath[this.sharedPath.length-1] == '/' ? this.sharedPath : this.sharedPath + '/';
+      parts.forEach(p => {
+        breadcrumbs.push({
+          name: p,
+          path: parentPath,
+          type: 1
+        });
+        parentPath += '/' + p;
+      });
+
+      return breadcrumbs;
+      let path = this.path.split('/');
+      path.pop();
+      path = path.join('/');
+      return {
+        path: path,
+        type: 1
+      };
+    }
+  },
   methods: {
     show(file) {
-      console.log(file)
       if (file.type == 1) {
         this.fileSystem.index(file.path)
         .then(res => {
           this.current = file;
           this.files = res.data;
+          this.sharedPath = res.sharedPath;
         })
       }
       else {
-        console.log('opening ' + file.path)
         this.fileSystem.show(file.path)
         .then(res => {
           this.$emit('fileOpen', res.data);
