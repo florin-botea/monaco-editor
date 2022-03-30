@@ -7,13 +7,15 @@
           <button class="btn btn-secondary">&times;</button>
         </div>
       </div>
-      <div class="modal-body">
-        <ul class="p-2">
-          <li v-for="file in files" class="py-2 border-b" @click="show(file)">
-            <i class="fa-solid fa-folder" v-if="file.type==1"></i>
-            <i class="fa-solid fa-file" v-else></i>
-             {{ file.name }}</li>
-        </ul>
+      <div class="modal-body scrollable">
+        <div>
+          <ul class="p-2">
+            <li v-for="file in files" class="py-2 border-b" @click="show(file)">
+              <i class="fa-solid fa-folder" v-if="file.type==1"></i>
+              <i class="fa-solid fa-file" v-else></i>
+              {{ file.name }}</li>
+          </ul>
+        </div>
       </div>
       <div class="modal-footer">
       
