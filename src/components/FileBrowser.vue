@@ -30,7 +30,7 @@ export default {
     path: { type: String, default: '/' },
   },
   created() {
-        this.fileSystem.show('/storage/emulated/0/dev/exegeza/webpack.config.js')
+        this.fileSystem.show('/storage/emulated/0/dev/exegeza/webpack.mix.js')
         .then(res => {
           alert(res.data)
           this.$emit('fileOpen', res.data);
