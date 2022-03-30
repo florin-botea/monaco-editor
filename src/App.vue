@@ -19,8 +19,8 @@ export default {
     fileBrowserPath: '/',
   }),
   methods: {
-    onFileOpen(file) {
-      alert(file.content);
+    onFileOpen(content) {
+      alert(content);
     },
     onProjectOpen() {
 
