@@ -91,7 +91,9 @@ export default {
       else {
         this.fileSystem.show(file.path)
         .then(res => {
-          this.$emit('fileOpen', res.data);
+          file = Object.assign({}, file);
+          file.content = res.data;
+          this.$emit('fileOpen', file);
         })
       }
     }

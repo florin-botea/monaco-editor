@@ -21,6 +21,20 @@ $sizes: (1, 2, 3, 4, 5);
     padding-top: #{$size}rem;
     padding-bottom: #{$size}rem;
   }
+  .m-#{$i} {
+    margin: #{$size}rem;
+  }
+  .mx-#{$i} {
+    margin-left: #{$size}rem;
+    margin-right: #{$size}rem;
+  }
+  .my-#{$i} {
+    margin-top: #{$size}rem;
+    margin-bottom: #{$size}rem;
+  }
+  .ml-#{$i} {
+    margin-left: #{$size}rem;
+  }
 }
 
 .w-100 {
@@ -36,5 +50,9 @@ $sizes: (1, 2, 3, 4, 5);
 }
 
 .nowrap {
-white-space: nowrap;
+  white-space: nowrap;
+}
+
+.rounded {
+  border-radius: 5%;
 }

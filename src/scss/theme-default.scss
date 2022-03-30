@@ -5,6 +5,9 @@ $secondary: #515197;
   .btn-primary, .bg-primary, .header, .modal-header {
     background-color: $primary;
   }
+  .btn-secondary, .bg-secondary {
+    background-color: $secondary;
+  }
   .btn-primary {
     color: white;
     font-weight: bold;
@@ -13,11 +16,14 @@ $secondary: #515197;
   .btn-secondary {
     color: white;
     font-weight: bold;
-    background-color: $secondary;
   }
 
   .modal-dialog {
     background: #515197;
     color: white;
+  }
+
+  .editor {
+    background: $secondary;
   }
 }

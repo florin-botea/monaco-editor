@@ -1,8 +1,8 @@
 const { VueLoaderPlugin } = require("vue-loader");
-const { VueCompilerSfc } = require('@vue/compiler-sfc');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /*const htmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 */
@@ -41,6 +41,28 @@ module.exports = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+      // {
+      //   test: /\.s?css$/,
+      //   use: [
+      //     "style-loader",
+      //     MiniCssExtractPlugin.loader,
+      //     "css-loader",
+      //     {
+      //       loader: "postcss-loader",
+      //       options: {
+      //         plugins: () => [autoprefixer()],
+      //       },
+      //     },
+      //     "sass-loader",
+      //   ],
+      // }
       /*
       {
         test: /\.(eot|ttf|woff|woff2)(\?\S*)?$/,
@@ -58,25 +80,15 @@ module.exports = {
           esModule: false,
         },
       },
-      {
-        test: /\.s?css$/,
-        use: [
-          "style-loader",
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: () => [autoprefixer()],
-            },
-          },
-          "sass-loader",
-        ],
-      },*/
+      ,*/
     ],
   },
   plugins: [
     new VueLoaderPlugin(),
+    new MonacoWebpackPlugin({
+      // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+      languages: ['json', 'javascript', 'html', 'xml']
+    }),
     /*
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
