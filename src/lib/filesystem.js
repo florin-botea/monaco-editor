@@ -55,13 +55,8 @@ export default {
   },
   _call(m, args) {
     return new Promise((resolve, reject) => {
-      console.log(m)
       try {
-        let res = null;
-        // nu merge...
-        if (m == 'index') res = window.fileSystem.index(args);
-        if (m == 'show') res = window.fileSystem.show(args);
-        
+        let res = window.fileSystem[m](args);
         if (mock) {
           new Promise(r => setTimeout(() => resolve(res), 1000));
           resolve(res)
