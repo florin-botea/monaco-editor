@@ -78,6 +78,7 @@ export default {
         })
       }
       else {
+        console.log('opening ' + file.path)
         this.fileSystem.show(file.path)
         .then(res => {
           this.$emit('fileOpen', res.data);
